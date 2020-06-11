@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="lib/fabric.min.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>LAYOUTRON-2000</h1>
+            <p>La máquina definitiva de hacer layouts (C) 1995</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <canvas id="c" width="750" height="600"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="img1">Image 1 URL</label>
+            <input type="text" id="img1" class="form-control" placeholder="Enter a URL...">
+            <button onclick="updateImg1()" class="btn btn-primary">Update</button>
+        </div>
+        <div class="col">
+            <label for="img2">Image 2 URL</label>
+            <input type="text" id="img2" class="form-control" placeholder="Enter a URL...">
+            <button onclick="updateImg2()" class="btn btn-primary">Update</button>
+        </div>
+        <div class="col">
+            <label for="img3">Image 3 URL</label>
+            <input type="text" id="img3" class="form-control" placeholder="Enter a URL...">
+            <button onclick="updateImg3()" class="btn btn-primary">Update</button>
+        </div>
+        <div class="col d-flex align-items-center justify-content-center">
+            <button onclick="exportImg()" class="btn btn-success btn-lg btn-block">Export</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
