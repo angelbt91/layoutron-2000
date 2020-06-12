@@ -3,31 +3,32 @@ let canvas;
 document.addEventListener('DOMContentLoaded', () => {
     canvas = new fabric.Canvas('c');
     canvas.setZoom(canvas.getZoom() * 0.5);
-    canvas.setBackgroundImage('assets/layout-base-1.png');
+    canvas.setBackgroundImage('assets/layout-base-1.png', canvas.renderAll.bind(canvas));
 });
 
 function updateImg1() {
     let img = new Image();
     img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
+    img.onload = function () {
+        let imgInstance = new fabric.Image(img, {
+            left: 219,
+            top: 480
+        });
+        imgInstance.scaleToWidth(251);
+
+        imgInstance.clipPath = new fabric.Rect({
+            left: 219,
+            top: 480,
+            width: 251,
+            height: 280,
+            fill: 'transparent',
+            selectable: false,
+            absolutePositioned: true
+        });
+
+        canvas.add(imgInstance);
+    }
     img.src = document.getElementById("img1").value;
-
-    let imgInstance = new fabric.Image(img, {
-        left: 219,
-        top: 480
-    });
-    imgInstance.scaleToWidth(251);
-
-    imgInstance.clipPath = new fabric.Rect({
-        left: 219,
-        top: 480,
-        width: 251,
-        height: 280,
-        fill: 'transparent',
-        selectable: false,
-        absolutePositioned: true
-    });
-
-    canvas.add(imgInstance);
 }
 
 function updateImg2() {
