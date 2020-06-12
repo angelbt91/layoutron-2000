@@ -22,7 +22,7 @@ function updateImg1() {
     }
 
     let img = new Image();
-    img.crossOrigin = "use-credentials"; // needed to avoid CORS security block on export
+    img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
     img.onload = function () {
         if (img1status !== undefined) {
             img1 = new fabric.Image(img, img1status);
