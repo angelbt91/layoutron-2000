@@ -1,4 +1,5 @@
 let canvas;
+let img1;
 
 document.addEventListener('DOMContentLoaded', () => {
     canvas = new fabric.Canvas('c');
@@ -7,16 +8,33 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function updateImg1() {
-    let img = new Image();
-    img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
-    img.onload = function () {
-        let imgInstance = new fabric.Image(img, {
-            left: 219,
-            top: 480
-        });
-        imgInstance.scaleToWidth(251);
+    let img1status;
+    if (img1 !== undefined) {
+        img1status = {
+            'top': img1.top,
+            'left': img1.left,
+            'height': img1.height,
+            'width': img1.width,
+            'angle': img1.angle
+        }
+        console.log(img1status);
+        canvas.remove(img1);
+    }
 
-        imgInstance.clipPath = new fabric.Rect({
+    let img = new Image();
+    img.crossOrigin = "use-credentials"; // needed to avoid CORS security block on export
+    img.onload = function () {
+        if (img1status !== undefined) {
+            img1 = new fabric.Image(img, img1status);
+        } else {
+            img1 = new fabric.Image(img, {
+                left: 219,
+                top: 480
+            });
+            img1.scaleToWidth(251);
+        }
+
+        img1.clipPath = new fabric.Rect({
             left: 219,
             top: 480,
             width: 251,
@@ -26,7 +44,7 @@ function updateImg1() {
             absolutePositioned: true
         });
 
-        canvas.add(imgInstance);
+        canvas.add(img1);
     }
     img.src = document.getElementById("img1").value;
 }
