@@ -1,25 +1,17 @@
 let canvas;
 
 document.addEventListener('DOMContentLoaded', () => {
-    canvas = new fabric.Canvas('c', {
-        backgroundColor: 'rgb(100,100,200)'
-    });
-
+    canvas = new fabric.Canvas('c');
     canvas.setZoom(canvas.getZoom() * 0.5);
-
-    fabric.Image.fromURL('assets/layout-base-1.png', function (img) {
-        img.set('selectable', false)
-        canvas.add(img);
-        canvas.sendToBack(img);
-    });
+    canvas.setBackgroundImage('assets/layout-base-1.png');
 });
 
 function updateImg1() {
-    var img = new Image();
+    let img = new Image();
     img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
     img.src = document.getElementById("img1").value;
 
-    var imgInstance = new fabric.Image(img, {
+    let imgInstance = new fabric.Image(img, {
         left: 219,
         top: 480
     });
