@@ -7,37 +7,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     canvas.setZoom(canvas.getZoom() * 0.5);
 
-    fabric.Image.fromURL('assets/layout-base-1.png', function (oImg) {
-        oImg.set('selectable', false)
-        canvas.add(oImg);
-        canvas.sendToBack(oImg);
+    fabric.Image.fromURL('assets/layout-base-1.png', function (img) {
+        img.set('selectable', false)
+        canvas.add(img);
+        canvas.sendToBack(img);
     });
-
-
 });
 
 function updateImg1() {
-    let imgSrc = document.getElementById("img1").value;
+    var img = new Image();
+    img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
+    img.src = document.getElementById("img1").value;
 
-    fabric.Image.fromURL(imgSrc, function (oImg) {
-        oImg.set({
-            left: 220,
-            top: 480
-        });
-        oImg.scaleToHeight(250);
-
-        oImg.clipPath = new fabric.Rect({
-            left: 220,
-            top: 480,
-            width: 250,
-            height: 280,
-            fill: 'transparent',
-            selectable: false,
-            absolutePositioned: true
-        });
-
-        canvas.add(oImg);
+    var imgInstance = new fabric.Image(img, {
+        left: 219,
+        top: 480
     });
+    imgInstance.scaleToWidth(251);
+
+    imgInstance.clipPath = new fabric.Rect({
+        left: 219,
+        top: 480,
+        width: 251,
+        height: 280,
+        fill: 'transparent',
+        selectable: false,
+        absolutePositioned: true
+    });
+
+    canvas.add(imgInstance);
 }
 
 function updateImg2() {
