@@ -10,37 +10,47 @@
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <title>LAYOUTRON-2000</title>
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>LAYOUTRON-2000 | Alpha version</h1>
-            <p>La máquina definitiva de hacer layouts (C) 1995</p>
+<body class="vh100">
+<div class="container-fluid h100">
+    <div class="row h100">
+        <div class="col-4 bg-light">
+            <div class="row">
+                <div class="col">
+                    <h1>LAYOUTRON-2000 | Alpha version</h1>
+                    <p>La máquina definitiva de hacer layouts (C) 1995</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="img1">Image 1 URL</label>
+                    <input type="text" id="img1" class="form-control" placeholder="Enter a URL...">
+                    <button onclick="updateImg1()" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="img2">Image 2 URL</label>
+                    <input type="text" id="img2" class="form-control" placeholder="Enter a URL...">
+                    <button onclick="updateImg2()" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="img3">Image 3 URL</label>
+                    <input type="text" id="img3" class="form-control" placeholder="Enter a URL...">
+                    <button onclick="updateImg3()" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button onclick="exportImg()" class="btn btn-success btn-lg btn-block">Export</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-            <canvas id="c" width="750" height="600"></canvas>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <label for="img1">Image 1 URL</label>
-            <input type="text" id="img1" class="form-control" placeholder="Enter a URL...">
-            <button onclick="updateImg1()" class="btn btn-primary">Update</button>
-        </div>
-        <div class="col">
-            <label for="img2">Image 2 URL</label>
-            <input type="text" id="img2" class="form-control" placeholder="Enter a URL...">
-            <button onclick="updateImg2()" class="btn btn-primary">Update</button>
-        </div>
-        <div class="col">
-            <label for="img3">Image 3 URL</label>
-            <input type="text" id="img3" class="form-control" placeholder="Enter a URL...">
-            <button onclick="updateImg3()" class="btn btn-primary">Update</button>
-        </div>
-        <div class="col d-flex align-items-center justify-content-center">
-            <button onclick="exportImg()" class="btn btn-success btn-lg btn-block">Export</button>
+        <div class="col-8 d-flex align-items-center">
+            <div class="col-12 d-flex justify-content-center">
+                <canvas id="c" width="750" height="600"></canvas>
+            </div>
         </div>
     </div>
 </div>
