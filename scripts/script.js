@@ -1,5 +1,19 @@
 let canvas;
 let img1;
+let img1originalCoords = {
+    'top': 480,
+    'left': 219,
+    'currentWidth': 251
+};
+let img1clip = new fabric.Rect({
+    left: 219,
+    top: 480,
+    width: 251,
+    height: 280,
+    fill: 'transparent',
+    selectable: false,
+    absolutePositioned: true
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     canvas = new fabric.Canvas('c');
@@ -8,44 +22,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function updateImg1() {
-    let img1status;
-    if (img1 !== undefined) {
-        img1status = {
-            'top': img1.top,
-            'left': img1.left,
-            'height': img1.height,
-            'width': img1.width,
-            'angle': img1.angle
-        }
-        console.log(img1status);
-        canvas.remove(img1);
-    }
-
     let img = new Image();
     img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
+
     img.onload = function () {
-        if (img1status !== undefined) {
-            img1 = new fabric.Image(img, img1status);
-        } else {
-            img1 = new fabric.Image(img, {
-                left: 219,
-                top: 480
-            });
-            img1.scaleToWidth(251);
+        let imgCoords = (img1 !== undefined) ? {
+            'top': img1.top,
+            'left': img1.left,
+            'currentWidth': img1.width * img1.scaleX,
+            'angle': img1.angle
+        } : img1originalCoords;
+
+        if (img1 !== undefined) {
+            canvas.remove(img1);
         }
 
-        img1.clipPath = new fabric.Rect({
-            left: 219,
-            top: 480,
-            width: 251,
-            height: 280,
-            fill: 'transparent',
-            selectable: false,
-            absolutePositioned: true
-        });
-
+        img1 = new fabric.Image(img, imgCoords);
+        img1.scaleToWidth(imgCoords.currentWidth);
+        img1.clipPath = img1clip;
         canvas.add(img1);
     }
+
     img.src = document.getElementById("img1").value;
 }
 
