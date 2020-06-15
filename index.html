@@ -40,10 +40,10 @@
                                             </div>
                                         </div>
                                         <div class="col d-flex justify-content-center">
-                                            <button type="button" class="btn btn-link" onclick="resetImg1()">
+                                            <button type="button" class="btn btn-link" onclick="resetImg(1)">
                                                 <i class="fas fa-sync" style="color:darkslategray;"></i>
                                             </button>
-                                            <button type="button" class="btn btn-link" onclick="deleteImg1()">
+                                            <button type="button" class="btn btn-link" onclick="deleteImg(1)">
                                                 <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
                                             </button>
                                         </div>
@@ -51,15 +51,15 @@
                                     <div class="row m-0">
                                         <div class="col d-flex flex-wrap justify-content-center">
                                             <button type="button" class="btn btn-primary m-1" data-toggle="modal"
-                                                    data-target="#img1modal">
+                                                    data-target="#img-modal" onclick="setImageToUpdate(1)">
                                                 From URL...
                                             </button>
-                                            <button type="button" class="btn btn-primary m-1 p-0">
-                                                <label for="uploadImg1btn" id="uploadImg1label">
+                                            <button type="button" class="btn btn-primary m-1 p-0" onclick="setImageToUpdate(1)">
+                                                <label for="img1fileUploadBtn" id="uploadImg1label">
                                                     From file...
                                                 </label>
                                             </button>
-                                            <input type="file" onchange="updateImg1('pc')" id="uploadImg1btn" class="d-none"/>
+                                            <input type="file" onchange="updateImg('pc')" id="img1fileUploadBtn" class="d-none"/>
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="img1modal" tabindex="-1" role="dialog" aria-labelledby="Image 1 modal" aria-hidden="true">
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="Image 1 modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -153,8 +153,8 @@
             </div>
             <div class="modal-body">
                 <div class="ml-2 mr-2 mb-2">
-                    <label for="img1">URL</label>
-                    <input type="text" id="img1" class="form-control" placeholder="Enter a URL...">
+                    <label for="imgUrlInput">URL</label>
+                    <input type="text" id="imgUrlInput" class="form-control" placeholder="Enter a URL...">
                 </div>
                 <p class="m-3 modal-disclaimer">
                     If clicking on "Update" doesn't work, please download the image to your PC and upload it using the
@@ -163,7 +163,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="updateImg1('url')">Update</button>
+                <button type="button" class="btn btn-primary" onclick="updateImg('url')">Update</button>
             </div>
         </div>
     </div>

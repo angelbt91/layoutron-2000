@@ -1,4 +1,5 @@
 let canvas;
+let imgToUpdate;
 let img1;
 let img1originalCoords = {
     'top': 480,
@@ -21,39 +22,75 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.setBackgroundImage('assets/layout-base-1.png', canvas.renderAll.bind(canvas));
 });
 
-function checkFileExtension(url) {
+function checkIfFileIsImage(url) {
     return (url.match(/.(jpeg|jpg|gif|png)/i) != null);
 }
 
-function updateImg1(origin) {
+function setImageToUpdate(num) {
+    // upon opening an URL/upload modal, we set the image number here
+    // so further functions know which image we were updating
+    return imgToUpdate = num;
+}
+
+function assignNewImageToGlobalVariableImage(imgX) {
+    switch(imgToUpdate) {
+        case 1:
+            img1 = imgX;
+            break;
+    }
+}
+
+function setXvalues(number) {
+    switch (number) {
+        case 1:
+            return {
+                'imgX': img1,
+                'imgXoriginalCoords': img1originalCoords,
+                'imgXclip': img1clip,
+                'imgXpreviewSelector': 'img1preview',
+                'imgXtoolsSelector': 'img1tools',
+                'imgXuploadBtnSelector': 'img1fileUploadBtn'
+            }
+    }
+}
+
+function updateImg(origin) {
+    let {imgX, imgXoriginalCoords, imgXclip, imgXpreviewSelector, imgXtoolsSelector, imgXuploadBtnSelector} = setXvalues(imgToUpdate);
+
     let img = new Image();
     img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
 
     img.onload = function () {
-        let imgCoords = (img1 !== undefined) ? {
-            'top': img1.top,
-            'left': img1.left,
-            'currentWidth': img1.width * img1.scaleX,
-            'angle': img1.angle
-        } : img1originalCoords;
+        let newImgCoords;
 
-        if (img1 !== undefined) {
-            canvas.remove(img1);
+        // if there is an image already, we keep its coords before deleting it
+        if (imgX !== undefined) {
+            newImgCoords = {
+                'top': imgX.top,
+                'left': imgX.left,
+                'currentWidth': imgX.width * imgX.scaleX,
+                'angle': imgX.angle
+            };
+            canvas.remove(imgX);
+        } else {
+            newImgCoords = imgXoriginalCoords;
         }
 
-        img1 = new fabric.Image(img, imgCoords);
-        img1.scaleToWidth(imgCoords.currentWidth);
-        img1.clipPath = img1clip;
-        canvas.add(img1);
-        document.getElementById('img1preview').src = img.src;
-        document.getElementById('img1tools').classList.remove("d-none");
-        $('#img1modal').modal('hide');
+        imgX = new fabric.Image(img, newImgCoords);
+        imgX.scaleToWidth(newImgCoords.currentWidth);
+        imgX.clipPath = imgXclip;
+        canvas.add(imgX);
+        assignNewImageToGlobalVariableImage(imgX); // save imgX into the corresponding global variable
+
+        document.getElementById(imgXpreviewSelector).src = img.src;
+        document.getElementById(imgXtoolsSelector).classList.remove("d-none");
+        $('#img-modal').modal('hide');
     }
 
     switch (origin) {
         case 'pc':
-            let route = document.getElementById('uploadImg1btn').files[0];
-            if (!checkFileExtension(route.name)) {
+            let route = document.getElementById(imgXuploadBtnSelector).files[0];
+            if (!checkIfFileIsImage(route.name)) {
                 return alert("Error: that doesn't look like an image. Please import a JPG, GIF or PNG.");
             }
 
@@ -61,47 +98,58 @@ function updateImg1(origin) {
             reader.onload = function (event) {
                 img.src = event.target.result;
             }
-
             reader.readAsDataURL(route);
             break;
+
         case 'url':
-            let url = document.getElementById("img1").value;
-            if (!checkFileExtension(url)) {
+            let url = document.getElementById("imgUrlInput").value;
+            if (!checkIfFileIsImage(url)) {
                 return alert("Error: that doesn't look like an image. Please import a JPG, GIF or PNG.");
             }
             img.src = url;
             break;
+
         default:
             console.log("Can't recognize where the image comes from.")
             break;
     }
 }
 
-function resetImg1() {
+function resetImg(num) {
+    let img, imgOriginalCoords;
+    switch (num) {
+        case(1):
+            img = img1;
+            imgOriginalCoords = img1originalCoords;
+            break;
+    }
+
     // we have to set and render the angle to 0 before the rest of the properties
     // in order to get the correct output
-    img1.set('angle', 0);
-    img1.setCoords();
+    img.set('angle', 0);
+    img.setCoords();
     canvas.renderAll();
 
-    img1.set(img1originalCoords);
-    img1.scaleToWidth(img1originalCoords.currentWidth, img1originalCoords.currentWidth);
-    img1.setCoords();
+    img.set(imgOriginalCoords);
+    img.scaleToWidth(imgOriginalCoords.currentWidth, imgOriginalCoords.currentWidth);
+    img.setCoords();
     canvas.renderAll();
 }
 
-function deleteImg1() {
-    canvas.remove(img1);
-    document.getElementById('img1preview').src = "";
-    document.getElementById('img1tools').classList.add("d-none");
-}
-
-function updateImg2() {
-    console.log("Update image 2");
-}
-
-function updateImg3() {
-    console.log("Update image 3");
+function deleteImg(num) {
+    // we need to remove the image, the preview image and the tools
+    // we use the switch case to dynamically determine which ones to remove
+    let img, imgPreview, imgTools;
+    switch (num) {
+        case(1):
+            img = img1;
+            imgPreview = 'img1preview';
+            imgTools = 'img1tools';
+            break;
+    }
+    canvas.remove(img);
+    document.getElementById(imgPreview).src = "";
+    document.getElementById(imgTools).classList.add("d-none");
 }
 
 function exportImg() {
