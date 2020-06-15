@@ -78,7 +78,16 @@ function updateImg1(origin) {
 }
 
 function resetImg1() {
-    console.log("Reset image 1.");
+    // we have to set and render the angle to 0 before the rest of the properties
+    // in order to get the correct output
+    img1.set('angle', 0);
+    img1.setCoords();
+    canvas.renderAll();
+
+    img1.set(img1originalCoords);
+    img1.scaleToWidth(img1originalCoords.currentWidth, img1originalCoords.currentWidth);
+    img1.setCoords();
+    canvas.renderAll();
 }
 
 function deleteImg1() {
