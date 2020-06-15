@@ -41,6 +41,7 @@ function updateImg1() {
         img1.scaleToWidth(imgCoords.currentWidth);
         img1.clipPath = img1clip;
         canvas.add(img1);
+        $('#img1modal').modal('hide');
     }
 
     img.src = document.getElementById("img1").value;

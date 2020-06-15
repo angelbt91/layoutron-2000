@@ -16,30 +16,86 @@
 </nav>
 <div class="container-fluid h100">
     <div class="row h100">
-        <div class="col-4 bg-light">
-            <div class="row mt-4">
+        <div class="col-3 bg-light">
+            <div class="row mt-3">
                 <div class="col">
-                    <label for="img1">Image 1 URL</label>
-                    <input type="text" id="img1" class="form-control" placeholder="Enter a URL...">
-                    <button onclick="updateImg1()" class="btn btn-primary">Update</button>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col">
-                    <label for="img2">Image 2 URL</label>
-                    <input type="text" id="img2" class="form-control" placeholder="Enter a URL...">
-                    <button onclick="updateImg2()" class="btn btn-primary">Update</button>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col">
-                    <label for="img3">Image 3 URL</label>
-                    <input type="text" id="img3" class="form-control" placeholder="Enter a URL...">
-                    <button onclick="updateImg3()" class="btn btn-primary">Update</button>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                        Image 1
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                 data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Upload image</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#img1modal">
+                                        From URL...
+                                    </button>
+                                    <button type="button" class="btn btn-primary disabled">
+                                        From file...
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                        Image 2
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                 data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Upload image</p>
+                                    <button type="button" class="btn btn-primary disabled" data-toggle="modal"
+                                            data-target="#img2modal">
+                                        From URL...
+                                    </button>
+                                    <button type="button" class="btn btn-primary disabled">
+                                        From file...
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Image 3
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                 data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Upload image</p>
+                                    <button type="button" class="btn btn-primary disabled" data-toggle="modal"
+                                            data-target="#img3modal">
+                                        From URL...
+                                    </button>
+                                    <button type="button" class="btn btn-primary disabled">
+                                        From file...
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-8 d-flex flex-column justify-content-center align-items-center">
+        <div class="col-9 d-flex flex-column justify-content-center align-items-center">
             <div class="row">
                 <div class="col d-flex flex-column align-items-center justify-content-center">
                     <canvas id="c" width="750" height="600"></canvas>
@@ -54,7 +110,37 @@
     </div>
 </div>
 
+<div class="modal fade" id="img1modal" tabindex="-1" role="dialog" aria-labelledby="Image 1 modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload image from URL...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="img1">Image 1 URL</label>
+                <input type="text" id="img1" class="form-control" placeholder="Enter a URL...">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="updateImg1()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="lib/fabric.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script type="text/javascript" src="scripts/script.js"></script>
 
 </body>
