@@ -21,7 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.setBackgroundImage('assets/layout-base-1.png', canvas.renderAll.bind(canvas));
 });
 
-function updateImg1() {
+function checkFileExtension(url) {
+    return (url.match(/.(jpeg|jpg|gif|png)/i) != null);
+}
+
+function updateImg1(origin) {
     let img = new Image();
     img.crossOrigin = "anonymous"; // needed to avoid CORS security block on export
 
@@ -41,10 +45,46 @@ function updateImg1() {
         img1.scaleToWidth(imgCoords.currentWidth);
         img1.clipPath = img1clip;
         canvas.add(img1);
+        document.getElementById('img1preview').src = img.src;
+        document.getElementById('img1tools').classList.remove("d-none");
         $('#img1modal').modal('hide');
     }
 
-    img.src = document.getElementById("img1").value;
+    switch (origin) {
+        case 'pc':
+            let route = document.getElementById('uploadImg1btn').files[0];
+            if (!checkFileExtension(route.name)) {
+                return alert("Error: that doesn't look like an image. Please import a JPG, GIF or PNG.");
+            }
+
+            let reader = new FileReader();
+            reader.onload = function (event) {
+                img.src = event.target.result;
+            }
+
+            reader.readAsDataURL(route);
+            break;
+        case 'url':
+            let url = document.getElementById("img1").value;
+            if (!checkFileExtension(url)) {
+                return alert("Error: that doesn't look like an image. Please import a JPG, GIF or PNG.");
+            }
+            img.src = url;
+            break;
+        default:
+            console.log("Can't recognize where the image comes from.")
+            break;
+    }
+}
+
+function resetImg1() {
+    console.log("Reset image 1.");
+}
+
+function deleteImg1() {
+    canvas.remove(img1);
+    document.getElementById('img1preview').src = "";
+    document.getElementById('img1tools').classList.add("d-none");
 }
 
 function updateImg2() {
