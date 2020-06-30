@@ -27,26 +27,37 @@ let img2originalCoords = {
 let img2clip = new fabric.Rect({
     'top': 480,
     'left': 727,
-    width: 256,
-    height: 281,
-    fill: 'transparent',
-    selectable: false,
-    absolutePositioned: true
+    'width': 256,
+    'height': 281,
+    'fill': 'transparent',
+    'selectable': false,
+    'absolutePositioned': true
 });
 let img2bg = new fabric.Rect({
     'top': 480,
     'left': 727,
-    width: 256,
-    height: 281,
-    fill: document.getElementById('bgcolor').value,
-    selectable: false
+    'width': 256,
+    'height': 281,
+    'fill': document.getElementById('bgcolor').value,
+    'selectable': false
 });
+let img2frame;
 
 document.addEventListener('DOMContentLoaded', () => {
     canvas = new fabric.Canvas('c');
     canvas.setZoom(canvas.getZoom() * 0.5);
     canvas.setBackgroundImage('assets/layout-base-1.png', canvas.renderAll.bind(canvas));
     canvas.add(img2bg);
+    fabric.Image.fromURL('assets/Frame_Tech.png', function (frame) {
+        img2frame = frame;
+        img2frame.set({
+            'top': 480,
+            'left': 727,
+            'selectable': false
+        })
+        img2frame.scaleToWidth(img2originalCoords.currentWidth);
+        canvas.add(frame);
+    });
 });
 
 function checkIfFileIsImage(url) {
@@ -218,9 +229,11 @@ function exportImg() {
 }
 
 function updateBgColor(color) {
-    img2bg.set({ fill: color });
+    img2bg.set({fill: color});
+    document.getElementById('bgcolor').value = color;
     canvas.renderAll();
 }
 
-
-
+function updateFrame(frame) {
+    console.log(frame);
+}
