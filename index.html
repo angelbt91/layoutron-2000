@@ -36,7 +36,7 @@
                                     <div class="row d-none mb-2" id="img1tools">
                                         <div class="row m-2">
                                             <div class="col">
-                                                <img id="img1preview" alt="Image 1 preview" src="">
+                                                <img id="img1preview" class="imgPreview" alt="Image 1 preview" src="">
                                             </div>
                                         </div>
                                         <div class="col d-flex justify-content-center">
@@ -55,7 +55,7 @@
                                                 From URL...
                                             </button>
                                             <button type="button" class="btn btn-primary m-1 p-0" onclick="setImageToUpdate(1)">
-                                                <label for="img1fileUploadBtn" id="uploadImg1label">
+                                                <label for="img1fileUploadBtn" id="uploadImg1label" class="uploadImgLabel">
                                                     From file...
                                                 </label>
                                             </button>
@@ -78,19 +78,44 @@
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                  data-parent="#accordion">
                                 <div class="card-body">
-                                    <button type="button" class="btn btn-primary disabled" data-toggle="modal"
-                                            data-target="#img2modal">
-                                        From URL...
-                                    </button>
-                                    <button type="button" class="btn btn-primary disabled">
-                                        From file...
-                                    </button>
-                                    <button type="button" class="btn btn-link disabled">
-                                        <i class="fas fa-sync" style="color:darkslategray;"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-link disabled">
-                                        <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
-                                    </button>
+                                    <div class="row d-none mb-2" id="img2tools">
+                                        <div class="row m-2">
+                                            <div class="col">
+                                                <img id="img2preview" class="imgPreview" alt="Image 2 preview" src="">
+                                            </div>
+                                        </div>
+                                        <div class="col d-flex justify-content-center">
+                                            <button type="button" class="btn btn-link" onclick="resetImg(2)">
+                                                <i class="fas fa-sync" style="color:darkslategray;"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-link" onclick="deleteImg(2)">
+                                                <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="col d-flex flex-wrap justify-content-center">
+                                            <button type="button" class="btn btn-primary m-1" data-toggle="modal"
+                                                    data-target="#img-modal" onclick="setImageToUpdate(2)">
+                                                From URL...
+                                            </button>
+                                            <button type="button" class="btn btn-primary m-1 p-0" onclick="setImageToUpdate(2)">
+                                                <label for="img2fileUploadBtn" id="uploadImg2label" class="uploadImgLabel">
+                                                    From file...
+                                                </label>
+                                            </button>
+                                            <input type="file" onchange="updateImg('pc')" id="img2fileUploadBtn" class="d-none"/>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col d-flex justify-content-center align-items-center">
+                                            <label for="bgcolor" class="bgColorPickerLabel">Background color:</label>
+                                            <input type="color" id="bgcolor" name="bgcolor" value="#ff0000" onchange="updateBgColor(value)" class="bgColorPicker">
+                                            <button type="button" id="bgcolortransparent" class="bgColorPickerTransparent" onclick="updateBgColor('transparent')">
+                                                <i class="fas fa-tint-slash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

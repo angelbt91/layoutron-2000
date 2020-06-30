@@ -32,7 +32,7 @@ canvas {
     padding-top: 20px;
 }
 
-#img1preview {
+.imgPreview {
     max-width: 100%;
 }
 
@@ -42,8 +42,28 @@ canvas {
     color: darkslategray;
 }
 
-#uploadImg1label {
+.uploadImgLabel {
     margin: 0;
     padding: .375rem .75rem;
     cursor: pointer;
+}
+
+.bgColorPicker {
+    border: 0;
+    padding: 0;
+    margin-left: 7px;
+    height: 20px;
+    width: 20px;
+}
+
+.bgColorPickerTransparent {
+    background-color: #FFF;
+    margin-left: 7px;
+    border: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+.bgColorPickerLabel {
+    margin-bottom: 2px;
 }
