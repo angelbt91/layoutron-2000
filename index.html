@@ -40,10 +40,10 @@
                                             </div>
                                         </div>
                                         <div class="col d-flex justify-content-center">
-                                            <button type="button" class="btn btn-link" onclick="resetImg(1)">
+                                            <button type="button" class="btn btn-link" onclick="resetLayout(1)">
                                                 <i class="fas fa-sync" style="color:darkslategray;"></i>
                                             </button>
-                                            <button type="button" class="btn btn-link" onclick="deleteImg(1)">
+                                            <button type="button" class="btn btn-link" onclick="deleteLayout(1)">
                                                 <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
                                             </button>
                                         </div>
@@ -59,7 +59,7 @@
                                                     From file...
                                                 </label>
                                             </button>
-                                            <input type="file" onchange="updateImg('pc')" id="img1fileUploadBtn" class="d-none"/>
+                                            <input type="file" onchange="updateLayoutImage('pc')" id="img1fileUploadBtn" class="d-none"/>
                                         </div>
                                     </div>
                                 </div>
@@ -85,10 +85,10 @@
                                             </div>
                                         </div>
                                         <div class="col d-flex justify-content-center">
-                                            <button type="button" class="btn btn-link" onclick="resetImg(2)">
+                                            <button type="button" class="btn btn-link" onclick="resetLayout(2)">
                                                 <i class="fas fa-sync" style="color:darkslategray;"></i>
                                             </button>
-                                            <button type="button" class="btn btn-link" onclick="deleteImg(2)">
+                                            <button type="button" class="btn btn-link" onclick="deleteLayout(2)">
                                                 <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
                                             </button>
                                         </div>
@@ -104,7 +104,7 @@
                                                     From file...
                                                 </label>
                                             </button>
-                                            <input type="file" onchange="updateImg('pc')" id="img2fileUploadBtn" class="d-none"/>
+                                            <input type="file" onchange="updateLayoutImage('pc')" id="img2fileUploadBtn" class="d-none"/>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
@@ -167,7 +167,7 @@
                     <canvas id="c" width="750" height="600"></canvas>
                     <div class="col mt-4">
                         <div class="row d-flex justify-content-end">
-                            <button onclick="exportImg()" class="btn btn-success btn-lg">Export</button>
+                            <button onclick="exportImage()" class="btn btn-success btn-lg">Export</button>
                         </div>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="updateImg('url')">Update</button>
+                <button type="button" class="btn btn-primary" onclick="updateLayoutImage('url')">Update</button>
             </div>
         </div>
     </div>
@@ -213,7 +213,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="scripts/script.js"></script>
+
+<script type="text/javascript" src="src/globals.js"></script>
+<script type="text/javascript" src="src/Layout.js"></script>
+<script type="text/javascript" src="src/app.js"></script>
 
 </body>
 </html>
