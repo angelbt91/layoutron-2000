@@ -1,14 +1,19 @@
-let canvas, layoutToUpdate, image1, image2;
+let canvas, layoutToUpdate, image1, image2, image3, image4, image5;
 document.addEventListener('DOMContentLoaded', initializeApp());
 
 function initializeApp() {
     image1 = new Layout(image1data);
     image2 = new Layout(image2data);
+    image3 = new Layout(image3data);
+    image4 = new Layout(image4data);
+    image5 = new Layout(image5data);
 
     canvas = new fabric.Canvas('c');
     canvas.setZoom(canvas.getZoom() * 0.5);
     canvas.setBackgroundImage('assets/layout-base-1.png', canvas.renderAll.bind(canvas));
     canvas.add(image2.background);
+
+    // TODO set the frame always on top
     fabric.Image.fromURL('assets/Frame_Tech.png', function (frame) {
         image2.frame = frame;
         image2.frame.set({
@@ -39,6 +44,15 @@ function updateLayoutImage(imageSource) {
         case 2:
             elementToUpdate = image2;
             break;
+        case 3:
+            elementToUpdate = image3;
+            break;
+        case 4:
+            elementToUpdate = image4;
+            break;
+        case 5:
+            elementToUpdate = image5;
+            break;
         default:
             return;
     }
@@ -55,6 +69,15 @@ function resetLayout(layoutNumber) {
             break;
         case 2:
             elementToReset = image2;
+            break;
+        case 3:
+            elementToReset = image3;
+            break;
+        case 4:
+            elementToReset = image4;
+            break;
+        case 5:
+            elementToReset = image5;
             break;
         default:
             return;
@@ -73,6 +96,15 @@ function deleteLayout(layoutNumber) {
         case 2:
             elementToDelete = image2;
             break;
+        case 3:
+            elementToDelete = image3;
+            break;
+        case 4:
+            elementToDelete = image4;
+            break;
+        case 5:
+            elementToDelete = image5;
+            break;
         default:
             return;
     }
@@ -81,11 +113,11 @@ function deleteLayout(layoutNumber) {
 }
 
 function updateBgColor(color) {
-    image2.updateBgColor(color); // TODO create new rules when there are more bgs
+    image2.updateBgColor(color);
 }
 
 function updateFrame(frame) {
-    image2.updateFrame(frame); // TODO create new rules when there are more bgs
+    image2.updateFrame(frame);
 }
 
 function exportImage() {

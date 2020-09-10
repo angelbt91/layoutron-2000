@@ -150,22 +150,37 @@
                                                     </button>
                                                 </h5>
                                             </div>
-
                                             <div id="collapseOne2" class="collapse show" aria-labelledby="headingOne2" data-parent="#accordion2">
                                                 <div class="card-body">
-                                                    <button type="button" class="btn btn-primary disabled" data-toggle="modal"
-                                                            data-target="#img3modal">
-                                                        From URL...
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary disabled">
-                                                        From file...
-                                                    </button>
-                                                    <button type="button" class="btn btn-link disabled">
-                                                        <i class="fas fa-sync" style="color:darkslategray;"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-link disabled">
-                                                        <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
-                                                    </button>
+                                                    <div class="row d-none mb-2" id="img3tools">
+                                                        <div class="row m-2">
+                                                            <div class="col">
+                                                                <img id="img3preview" class="imgPreview" alt="Image 3 preview" src="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col d-flex justify-content-center">
+                                                            <button type="button" class="btn btn-link" onclick="resetLayout(3)">
+                                                                <i class="fas fa-sync" style="color:darkslategray;"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-link" onclick="deleteLayout(3)">
+                                                                <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-0">
+                                                        <div class="col d-flex flex-wrap justify-content-center">
+                                                            <button type="button" class="btn btn-primary m-1" data-toggle="modal"
+                                                                    data-target="#img-modal" onclick="setImageToUpdate(3)">
+                                                                From URL...
+                                                            </button>
+                                                            <button type="button" class="btn btn-primary m-1 p-0" onclick="setImageToUpdate(3)">
+                                                                <label for="img3fileUploadBtn" id="uploadImg3label" class="uploadImgLabel">
+                                                                    From file...
+                                                                </label>
+                                                            </button>
+                                                            <input type="file" onchange="updateLayoutImage('pc')" id="img3fileUploadBtn" class="d-none"/>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,19 +194,35 @@
                                             </div>
                                             <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordion2">
                                                 <div class="card-body">
-                                                    <button type="button" class="btn btn-primary disabled" data-toggle="modal"
-                                                            data-target="#img3modal">
-                                                        From URL...
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary disabled">
-                                                        From file...
-                                                    </button>
-                                                    <button type="button" class="btn btn-link disabled">
-                                                        <i class="fas fa-sync" style="color:darkslategray;"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-link disabled">
-                                                        <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
-                                                    </button>
+                                                    <div class="row d-none mb-2" id="img4tools">
+                                                        <div class="row m-2">
+                                                            <div class="col">
+                                                                <img id="img4preview" class="imgPreview" alt="Image 4 preview" src="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col d-flex justify-content-center">
+                                                            <button type="button" class="btn btn-link" onclick="resetLayout(4)">
+                                                                <i class="fas fa-sync" style="color:darkslategray;"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-link" onclick="deleteLayout(4)">
+                                                                <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-0">
+                                                        <div class="col d-flex flex-wrap justify-content-center">
+                                                            <button type="button" class="btn btn-primary m-1" data-toggle="modal"
+                                                                    data-target="#img-modal" onclick="setImageToUpdate(4)">
+                                                                From URL...
+                                                            </button>
+                                                            <button type="button" class="btn btn-primary m-1 p-0" onclick="setImageToUpdate(4)">
+                                                                <label for="img4fileUploadBtn" id="uploadImg4label" class="uploadImgLabel">
+                                                                    From file...
+                                                                </label>
+                                                            </button>
+                                                            <input type="file" onchange="updateLayoutImage('pc')" id="img4fileUploadBtn" class="d-none"/>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,19 +236,35 @@
                                             </div>
                                             <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2" data-parent="#accordion2">
                                                 <div class="card-body">
-                                                    <button type="button" class="btn btn-primary disabled" data-toggle="modal"
-                                                            data-target="#img3modal">
-                                                        From URL...
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary disabled">
-                                                        From file...
-                                                    </button>
-                                                    <button type="button" class="btn btn-link disabled">
-                                                        <i class="fas fa-sync" style="color:darkslategray;"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-link disabled">
-                                                        <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
-                                                    </button>
+                                                    <div class="row d-none mb-2" id="img5tools">
+                                                        <div class="row m-2">
+                                                            <div class="col">
+                                                                <img id="img5preview" class="imgPreview" alt="Image 5 preview" src="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col d-flex justify-content-center">
+                                                            <button type="button" class="btn btn-link" onclick="resetLayout(5)">
+                                                                <i class="fas fa-sync" style="color:darkslategray;"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-link" onclick="deleteLayout(5)">
+                                                                <i class="fas fa-trash-alt" style="color:darkslategray;"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-0">
+                                                        <div class="col d-flex flex-wrap justify-content-center">
+                                                            <button type="button" class="btn btn-primary m-1" data-toggle="modal"
+                                                                    data-target="#img-modal" onclick="setImageToUpdate(5)">
+                                                                From URL...
+                                                            </button>
+                                                            <button type="button" class="btn btn-primary m-1 p-0" onclick="setImageToUpdate(5)">
+                                                                <label for="img5fileUploadBtn" id="uploadImg5label" class="uploadImgLabel">
+                                                                    From file...
+                                                                </label>
+                                                            </button>
+                                                            <input type="file" onchange="updateLayoutImage('pc')" id="img5fileUploadBtn" class="d-none"/>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -46,3 +46,63 @@ const image2data = {
     }),
     frame: undefined
 };
+
+const image3data = {
+    originalCoords: {
+        'top': 470,
+        'left': 1090,
+        'currentWidth': 130
+    },
+    clipPath: new fabric.Rect({
+        'top': 470,
+        'left': 1090,
+        'width': 130,
+        'height': 281,
+        'fill': 'transparent',
+        'selectable': false,
+        'absolutePositioned': true
+    }),
+    previewBoxSelector: "img3preview",
+    toolBoxSelector: "img3tools",
+    uploadButtonSelector: "img3fileUploadBtn"
+};
+
+const image4data = {
+    originalCoords: {
+        'top': 470,
+        'left': 1228,
+        'currentWidth': 96
+    },
+    clipPath: new fabric.Rect({
+        'top': 470,
+        'left': 1228,
+        'width': 96,
+        'height': 147,
+        'fill': 'transparent',
+        'selectable': false,
+        'absolutePositioned': true
+    }),
+    previewBoxSelector: "img4preview",
+    toolBoxSelector: "img4tools",
+    uploadButtonSelector: "img4fileUploadBtn"
+};
+
+const image5data = {
+    originalCoords: {
+        'top': 623,
+        'left': 1228,
+        'currentWidth': 96
+    },
+    clipPath: new fabric.Rect({
+        'top': 623,
+        'left': 1228,
+        'width': 96,
+        'height': 126,
+        'fill': 'transparent',
+        'selectable': false,
+        'absolutePositioned': true
+    }),
+    previewBoxSelector: "img5preview",
+    toolBoxSelector: "img5tools",
+    uploadButtonSelector: "img5fileUploadBtn"
+};

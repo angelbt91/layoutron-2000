@@ -107,6 +107,7 @@ class Layout {
     }
 
     updateFrame(frame) {
+        // TODO change the actual frame
         console.log("Frame escogido:", frame);
         console.log("Frame actual:", this.frame);
     }
