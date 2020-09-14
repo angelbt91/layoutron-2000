@@ -19,6 +19,8 @@ class Layout {
         newImage.onload = () => {
             let newLayoutCoords;
 
+            // if there's already an image, we save its current coords before deleting it
+            // in order to place the new image in the same position
             if (this.layout !== undefined) {
                 newLayoutCoords = this.getCurrentLayoutCoords();
                 canvas.remove(this.layout);
@@ -31,8 +33,9 @@ class Layout {
             newLayout.clipPath = this.clipPath;
             canvas.add(newLayout);
 
-            this.layout = newLayout;
+            this.layout = newLayout; // we save the reference to the image object
 
+            // we finish by showing the image edition tools and hiding the modal
             document.getElementById(this.previewBoxSelector).src = newImage.src;
             document.getElementById(this.toolBoxSelector).classList.remove("d-none");
             $('#img-modal').modal('hide');
@@ -90,7 +93,7 @@ class Layout {
     }
 
     deleteLayout() {
-        // we need to remove the image, the preview image and the tools
+        // we remove the image & hide the preview image and the edition tools
         canvas.remove(this.layout);
         document.getElementById(this.previewBoxSelector).src = "";
         document.getElementById(this.toolBoxSelector).classList.add("d-none");
