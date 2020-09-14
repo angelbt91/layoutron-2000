@@ -13,17 +13,7 @@ function initializeApp() {
     canvas.setBackgroundImage('assets/layout-base-1.png', canvas.renderAll.bind(canvas));
     canvas.add(image2.background);
 
-    // TODO set the frame always on top
-    fabric.Image.fromURL('assets/Frame_Tech.png', function (frame) {
-        image2.frame = frame;
-        image2.frame.set({
-            'top': 480,
-            'left': 727,
-            'selectable': false
-        })
-        image2.frame.scaleToWidth(image2.originalCoords.currentWidth);
-        canvas.add(frame);
-    });
+    canvas.setOverlayImage('./assets/Frame_Tech.png', canvas.renderAll.bind(canvas), frameTechData.coords);
 }
 
 function setImageToUpdate(layoutNumber) {

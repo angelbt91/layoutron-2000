@@ -106,3 +106,13 @@ const image5data = {
     toolBoxSelector: "img5tools",
     uploadButtonSelector: "img5fileUploadBtn"
 };
+
+const frameTechData = {
+    name: 'Tech',
+    coords: {
+        'top': 480,
+        'left': 727,
+        'scaleX': 256 / 1152, // frame width / image real width
+        'scaleY': 281 / 1156 // frame height / image real height
+    }
+}
