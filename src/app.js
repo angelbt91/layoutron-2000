@@ -13,7 +13,16 @@ function initializeApp() {
     canvas.setBackgroundImage('assets/layout-base-1.png', canvas.renderAll.bind(canvas));
     canvas.add(image2.background);
 
-    canvas.setOverlayImage('./assets/Frame_Tech.png', canvas.renderAll.bind(canvas), frameTechData.coords);
+    const framesSelector = document.getElementById("frames");
+    updateFrame(framesSelector.options[framesSelector.selectedIndex].value);
+}
+
+function updateFrame(value) {
+    let frameToAdd = frames.find((frame) => {
+        return frame.name === value;
+    });
+
+    canvas.setOverlayImage(frameToAdd.asset, canvas.renderAll.bind(canvas), frameToAdd.coords);
 }
 
 function setImageToUpdate(layoutNumber) {
@@ -104,10 +113,6 @@ function deleteLayout(layoutNumber) {
 
 function updateBgColor(color) {
     image2.updateBgColor(color);
-}
-
-function updateFrame(frame) {
-    image2.updateFrame(frame);
 }
 
 function exportImage() {

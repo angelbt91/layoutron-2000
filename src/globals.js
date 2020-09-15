@@ -107,12 +107,18 @@ const image5data = {
     uploadButtonSelector: "img5fileUploadBtn"
 };
 
-const frameTechData = {
+
+const frames = [{
+    name: 'None',
+    asset: null,
+    coords: null
+}, {
     name: 'Tech',
+    asset: './assets/Frame_Tech.png',
     coords: {
         'top': 480,
         'left': 727,
         'scaleX': 256 / 1152, // frame width / image real width
         'scaleY': 281 / 1156 // frame height / image real height
     }
-}
+}];

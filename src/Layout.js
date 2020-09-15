@@ -108,10 +108,4 @@ class Layout {
         document.getElementById('bgcolor').value = color;
         canvas.renderAll();
     }
-
-    updateFrame(frame) {
-        // TODO change the actual frame
-        console.log("Frame escogido:", frame);
-        console.log("Frame actual:", this.frame);
-    }
 }
